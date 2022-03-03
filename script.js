@@ -1,5 +1,5 @@
 "use strict";
-
+/*
 console.log('Запрос данных...');
 
 const req = new Promise(function (resolve, reject) {
@@ -31,4 +31,21 @@ req.then((data) => {
     console.error(`Произошла ошибка с объектом ${JSON.stringify(product)}`);
 }).finally(() => {
     console.log('Finally');
-});
+});*/
+
+const test = time => {
+    return new Promise(resolve => {
+        setTimeout( () => resolve(), time);
+    });
+};
+
+//test(1000).then(() => console.log('1000 ms'));
+//test(2000).then(() => console.log('2000 ms'));
+
+// Promise.all([test(1000), test(2000)]).then(() => {
+//     console.log('All');
+// });  // then выполнится, когда отработает последний Promise
+
+Promise.race([test(1000), test(2000)]).then(() => {
+    console.log('All');
+}); // then выполнится, когда отработает первый по скорости Promise
