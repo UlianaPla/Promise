@@ -11,7 +11,7 @@ const req = new Promise(function (resolve, reject) {
             price: 2000
         };
 
-        reject(product);
+        resolve(product);
     }, 2000);
 });
 
@@ -29,4 +29,6 @@ req.then((data) => {
     console.log(modifiedData);
 }).catch((product) => {
     console.error(`Произошла ошибка с объектом ${JSON.stringify(product)}`);
+}).finally(() => {
+    console.log('Finally');
 });
