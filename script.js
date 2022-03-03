@@ -23,5 +23,8 @@ req.then((data) => {
         }, 2000);
     });
 }).then(data => {
-    console.log(data);
+    data.modify = true;
+    return data;
+}).then((modifiedData) => {
+    console.log(modifiedData);
 });
